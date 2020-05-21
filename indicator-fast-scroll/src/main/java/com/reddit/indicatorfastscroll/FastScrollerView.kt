@@ -342,6 +342,7 @@ class FastScrollerView @JvmOverloads constructor(
     isPressed = consumed
 
     onItemIndicatorTouched?.invoke(consumed)
+    parent.requestDisallowInterceptTouchEvent(true)
     return consumed
   }
 
