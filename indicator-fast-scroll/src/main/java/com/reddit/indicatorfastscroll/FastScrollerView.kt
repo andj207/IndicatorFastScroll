@@ -91,6 +91,7 @@ class FastScrollerView @JvmOverloads constructor(
    * @see scrollToPosition
    */
   var useDefaultScroller: Boolean = true
+  var enableSmoothScroll: Boolean = true
   private var lastSelectedPosition: Int? = null
   private var isUpdateItemIndicatorsPosted = false
 
@@ -293,7 +294,12 @@ class FastScrollerView @JvmOverloads constructor(
   private fun scrollToPosition(position: Int) {
     recyclerView!!.apply {
       stopScroll()
-      smoothScrollToPosition(position)
+      if (enableSmoothScroll){
+        smoothScrollToPosition(position)
+      }
+      else {
+        scrollToPosition(position)
+      }
     }
   }
 
